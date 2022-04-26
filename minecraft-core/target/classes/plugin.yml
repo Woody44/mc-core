@@ -1,0 +1,30 @@
+name: Minecraft_Core
+main: woody44.minecraft.core.Core
+version: 0.1
+api-version: 1.18
+
+database: false
+    
+authors: [_woody44_]
+website: NONE
+prefix: core
+
+depend:
+
+commands:
+  register:
+    description: Set password to protect your account.
+    aliases: [register, reg, r]
+    usage: "Usage: /r <password> <password>"
+  login:
+    description: Log in to your account using password.
+    aliases: [login, log, l]
+    usage: "Usage: /l <password>"
+  item:
+    description: manage items.
+    aliases: [i]
+    usage: "Usage: /i create/save/swing"
+  lvl:
+    description: Modify player level/experience.
+    aliases: [xp]
+   

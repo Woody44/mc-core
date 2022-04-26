@@ -1,0 +1,32 @@
+@EventHandler
+	public void OnHunger(FoodLevelChangeEvent e)
+	{
+		Player p = ((Player)e.getEntity());
+		if(!Config.hunger)
+			e.setCancelled(true);
+		
+		if(p.getFoodLevel() > e.getFoodLevel())
+		{
+			int value = p.getFoodLevel() - ((int)((p.getFoodLevel() - e.getFoodLevel()) *  Config.hungerMultiplier));
+			
+			if(value < 0)
+				e.setFoodLevel(0);
+			else
+				e.setFoodLevel(value);
+		}
+		else
+		{
+			int value = p.getFoodLevel() + (int)((e.getFoodLevel() - p.getFoodLevel()) * Config.feedMultiplier);
+			if(value > 20)
+			{
+				p.setSaturation(p.getSaturation() + value - 20);
+				e.setFoodLevel(20);
+			}
+			else
+				e.setFoodLevel(value);
+			e.setFoodLevel(value);
+		}
+	}
+
+    fatness i slowness
+    
