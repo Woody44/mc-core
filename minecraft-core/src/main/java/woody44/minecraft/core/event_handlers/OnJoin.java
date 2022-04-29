@@ -12,6 +12,8 @@ public class OnJoin implements Listener {
     public void PlayerJoined(PlayerJoinEvent e) {
         PlayerCore.registerPlayer(e.getPlayer().getUniqueId());
         e.joinMessage(null);
+        e.getPlayer().getInventory().clear();
+        e.getPlayer().teleport(e.getPlayer().getWorld().getSpawnLocation());
         // TODO: Softcode Join Message
     }
 }

@@ -331,9 +331,11 @@ public class PlayerCore implements Listener {
         if (!e.getPlayer().getUniqueId().toString().equals(_UUID))
             return;
 
-        saveAll();
+        if(isAuthed)
+            saveAll();
         PlayerCore.unRegisterPlayer(e.getPlayer().getUniqueId());
-        regenTask.cancel();
+        if(isAuthed)
+            regenTask.cancel();
         HandlerList.unregisterAll(this);
     }
 

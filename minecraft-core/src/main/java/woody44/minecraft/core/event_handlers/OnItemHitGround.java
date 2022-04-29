@@ -23,7 +23,6 @@ public class OnItemHitGround implements Listener {
     @EventHandler
     public void onDrop(ItemSpawnEvent e) {
         ItemMeta meta = e.getEntity().getItemStack().getItemMeta();
-        Core.logger.warning("item spawned");
         if(meta.getPersistentDataContainer().has(new NamespacedKey(Core.Instance, "ground-hit")))
         {
             track.put(

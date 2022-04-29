@@ -31,6 +31,7 @@ public class Core extends JavaPlugin {
     @Override
     public void onEnable() {
         Init();
+        HandleConfig();
         MakeDirs();
         RegisterCommands();
         RegisterEvents();
@@ -56,6 +57,8 @@ public class Core extends JavaPlugin {
         server.getPluginCommand("register").setExecutor(new CMDRegister());
         server.getPluginCommand("item").setExecutor(new CMDitem());
         server.getPluginCommand("lvl").setExecutor(new CMDLevel());
+        server.getPluginCommand("world").setExecutor(new CMDWorld());
+        server.getPluginCommand("info").setExecutor(new CMDInfo());
     }
 
     private void Init() {
@@ -99,7 +102,7 @@ public class Core extends JavaPlugin {
                     if (!configFile.renameTo(new File("_core/config.old_"
                             + DateTimeFormatter.ofPattern("dd-MM-yyyy HH.mm.ss").format(LocalDateTime.now()) + ".yml")))
                         ;
-                    logger.info("NOT");
+                    logger.info("Generating new config file!");
 
                     configFile = new File("_core/config.yml");
                     configFile.createNewFile();
@@ -128,13 +131,12 @@ public class Core extends JavaPlugin {
     @Override
     public void onDisable() {
         for(PlayerCore player : PlayerCore.PLAYERS.values()){
-            player.save();
+            player.saveAll();
         }
     }
 
     @Override
     public void onLoad() {
         Instance = this;
-        HandleConfig();
     }
 }

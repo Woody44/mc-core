@@ -11,6 +11,9 @@ import java.text.MessageFormat;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 import woody44.minecraft.core.events.PlayerLevelUpEvent;
 import woody44.minecraft.core.events.PlayerLevelUpOnceEvent;
@@ -116,6 +119,12 @@ public class Profile {
         player.getBukkitPlayer().setHealth(20 * stats.Health / stats.Health_max);
         player.getBukkitPlayer().setLevel(stats.Level);
         player.getBukkitPlayer().setExp((float) stats.Experience / expNeeded);
+
+        File f = new File(getFolderString(ownerID, profileID)+"inventory.yml");
+        if(!f.exists())
+            return;
+        FileConfiguration fc = YamlConfiguration.loadConfiguration(f);
+        player.getBukkitPlayer().getInventory().setContents(fc.getList("items").toArray(new ItemStack[41]));
     }
 
     public void calculateExp() {
@@ -160,7 +169,15 @@ public class Profile {
             dataWriter = new PrintWriter(getFolderString()+"stats.json");
             dataWriter.write(_stats);
             dataWriter.close();
+
+            File f = new File(getFolderString()+"inventory.yml");
+            FileConfiguration fc = YamlConfiguration.loadConfiguration(f);
+            fc.set("items", player.getBukkitPlayer().getInventory().getContents());
+            fc.save(f);
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -175,5 +192,9 @@ public class Profile {
 
     public int getExpToNextLevel(){
         return expNeeded;
+    }
+
+    public String getID(){
+        return profileID;
     }
 }

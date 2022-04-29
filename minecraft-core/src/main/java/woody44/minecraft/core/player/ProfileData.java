@@ -8,7 +8,6 @@ import org.bukkit.Location;
 public class ProfileData {
     public String NAME = "Default";
     public long currency = 0;
-    public long currency_premium = 0;
     public String World = "world";
     public double x = 0, y = 0, z = 0;
 

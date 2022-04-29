@@ -1,6 +1,6 @@
 name: Minecraft_Core
 main: woody44.minecraft.core.Core
-version: 0.1
+version: 0.2
 api-version: 1.18
 
 database: false
@@ -27,4 +27,8 @@ commands:
   lvl:
     description: Modify player level/experience.
     aliases: [xp]
+  world:
+    description: World
+  info:
+    description: World
    

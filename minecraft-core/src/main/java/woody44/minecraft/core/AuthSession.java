@@ -55,7 +55,7 @@ public class AuthSession {
             @Override
             public void run() {
                 timeToKick --;
-                if(timeToKick < 0){
+                if(timeToKick <= 0){
                     p.kick(Component.text("Login Timeout.").color(TextColor.color(0xb88a3e)));
                     Bukkit.getScheduler().cancelTask(Sessions.get(p.getUniqueId().toString()).taskID);
                     return;

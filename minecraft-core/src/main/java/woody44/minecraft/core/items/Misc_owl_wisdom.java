@@ -88,7 +88,6 @@ public class Misc_owl_wisdom implements Listener{
                 int runs = 0;
                 @Override
                 public void run() {
-                    // TODO Auto-generated method stub
                     e.getEntity().getNearbyEntities(12, 12, 12).forEach(other->{
                         
                         if(p!= null)
@@ -99,7 +98,7 @@ public class Misc_owl_wisdom implements Listener{
                     runs+=1;
                     if(runs == 3)
                     {
-                        e.getEntity().remove();;
+                        e.getEntity().remove();
                         this.cancel();
                     }
                 }

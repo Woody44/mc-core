@@ -15,8 +15,9 @@ public class OnChat implements Listener {
             e.setCancelled(true);
             e.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', "&cLog in to send messages!"));
             return;
-        } else {
-            // TODO: Chat Formatting
         }
+
+        e.getPlayer().sendMessage(e.getPlayer().getInventory().getContents().length+"");
+        // TODO: Chat Formatting        
     }
 }

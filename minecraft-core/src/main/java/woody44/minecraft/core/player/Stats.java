@@ -14,6 +14,8 @@ public class Stats {
     public double Mana_regen = 0;
     public double Mana_regen_ooc = 0.5;
 
+    public double Hunger_max = 1.0;
+
     public int Experience = 0, Level = 1, SkillPoints = 10, EnchantPoints;
     
     //World
